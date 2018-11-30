@@ -110,16 +110,14 @@ hasMost(data);
 //Identify who has the most followers over 30
 
 function most(dataa, callback) {
+  var obj = {};
   for (list in dataa) {
     if (dataa[list].age > 30) {
-      if(obj) {
-       obj = dataa[list];
-      }
-      if(!obj) {
-        var obj = {};
-      }
+      obj[list] = dataa[list];
+
     }
   }
+  console.log('obj is ')
    console.log(obj);
 }
 most(data, hasMost);
