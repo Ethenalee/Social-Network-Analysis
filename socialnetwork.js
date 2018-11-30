@@ -64,10 +64,30 @@ function followedback (dataa) {
 }
 followedback(data);
 
+function printList(dataa) {
+  for (list in dataa) {
+    var lists = "";
+      for (var i = 0; i < dataa[list].followwhoI.length; i++) {
+        if (i === 0) {
+          lists = dataa[list].name + " follows " + dataa[list].followwhoI[i];
+        }
+        else {
+          lists += ", " + dataa[list].followwhoI[i];
+        }
+      }
+      for (var j = 0; j < dataa[list].followback.length; j++) {
+          if(j === 0) {
+            lists += " and " + dataa[list].followback[j];
+          }
+          else {
+            lists += ", " + dataa[list].followback[j];
+          }
+      }
+    console.log(lists + " follow back");
+  }
+}
+printList(data);
 
-
-
-console.log(data);
 // Identify who follows the most people
 
 
