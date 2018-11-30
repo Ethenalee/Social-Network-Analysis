@@ -101,5 +101,30 @@ followMost(data);
 
 //Identify who has the most followers
 
+function hasMost(dataa) {
+    var most = _.max(dataa, function(dataa){return dataa.followback.length});
+  console.log(most.name, 'has the most followers');
+}
+hasMost(data);
+
+//Identify who has the most followers over 30
+
+function most(dataa, callback) {
+  for (list in dataa) {
+    if (dataa[list].age > 30) {
+      if(obj) {
+       obj = dataa[list];
+      }
+      if(!obj) {
+        var obj = {};
+      }
+    }
+  }
+   console.log(obj);
+}
+most(data, hasMost);
+most(data, followMost);
+
+
 
 
