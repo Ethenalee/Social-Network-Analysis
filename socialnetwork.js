@@ -39,17 +39,10 @@ var _ = require('underscore');
 //
 function followWho(dataa) {
   for (list in dataa) {
-    var lists = "";
+    var lists = [];
     for (var i = 0; i < dataa[list].follows.length; i++) {
-      if (i === 0) {
-        lists = dataa[list].name + " follows " + dataa[dataa[list].follows[i]].name;
-      }
-      else {
-        lists += ", " + dataa[dataa[list].follows[i]].name;
-      }
+        lists.push(dataa[dataa[list].follows[i]].name);
     }
-
-
     dataa[list].followwhoI = lists
   }
 }
@@ -70,6 +63,7 @@ function followedback (dataa) {
   }
 }
 followedback(data);
+
 
 
 
