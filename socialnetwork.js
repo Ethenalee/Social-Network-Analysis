@@ -124,6 +124,39 @@ most(data, followMost);
 
 //List those who follow someone that doesn't follow them back
 
+function donotfollow(dataa) {
+  for (list in dataa) {
+    var arr = [ ];
+    for(var i = 0; i < dataa[list].followwhoI.length; i++) {
+      if(!dataa[list].followme.includes(dataa[list].followwhoI[i])) {
+        arr.push(dataa[list].followwhoI[i]);
+      }
+    }
+    dataa[list].donotfollowback = arr;
+  }
+}
+donotfollow(data);
+
+function donotfollowList(dataa) {
+  for (list in dataa) {
+    var lists = "";
+      for (var i = 0; i < dataa[list].donotfollowback.length; i++) {
+        if(dataa[list].donotfollowback.length === 0) {
+          lists = dataa[list].name + " does not have anyone who do not follow back";
+        }
+        else if (i === 0) {
+          lists = dataa[list].name + " has list of people who does not follow back: " + dataa[list].donotfollowback[i];
+        }
+        else if(i !== 0){
+          lists += ", " + dataa[list].donotfollowback[i];
+        }
+      }
+    console.log(lists);
+  }
+}
+donotfollowList(data);
+
+
 
 
 
