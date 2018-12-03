@@ -140,16 +140,14 @@ donotfollow(data);
 function donotfollowList(dataa) {
   for (list in dataa) {
     var lists = "";
-      for (var i = 0; i < dataa[list].donotfollowback.length; i++) {
-        if(dataa[list].donotfollowback.length === 0) {
+    if(dataa[list].donotfollowback.length === 0) {
           lists = dataa[list].name + " does not have anyone who do not follow back";
         }
-        else if (i === 0) {
-          lists = dataa[list].name + " has list of people who does not follow back: " + dataa[list].donotfollowback[i];
-        }
-        else if(i !== 0){
+    else {
+          lists = dataa[list].name + " has list of people who does not follow back: " + dataa[list].donotfollowback[0];
+      for (var i = 1; i < dataa[list].donotfollowback.length; i++) {
           lists += ", " + dataa[list].donotfollowback[i];
-        }
+      }
       }
     console.log(lists);
   }
