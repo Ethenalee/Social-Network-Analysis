@@ -156,6 +156,17 @@ function donotfollowList(dataa) {
 }
 donotfollowList(data);
 
+// List everyone and their reach (sum of # of followers and # of followers of followers)
+
+function reach(dataa) {
+  for (list in dataa) {
+
+  }
+}
+
+reach(data);
+console.log(data)
+
 
 
 
