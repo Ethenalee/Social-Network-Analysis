@@ -48,21 +48,21 @@ function followWho(dataa) {
 }
 followWho(data);
 
-function followedback (dataa) {
+function followedme (dataa) {
   for (list in dataa) {
     for (var i = 0; i < Object.keys(dataa).length; i ++) {
       if(dataa[list].follows.includes(Object.keys(dataa)[i])) {
-        if (data[Object.keys(dataa)[i]].followback) {
-          dataa[Object.keys(dataa)[i]].followback.push(dataa[list].name);
+        if (data[Object.keys(dataa)[i]].followme) {
+          dataa[Object.keys(dataa)[i]].followme.push(dataa[list].name);
         }
         else {
-          data[Object.keys(dataa)[i]].followback = [dataa[list].name];
+          data[Object.keys(dataa)[i]].followme = [dataa[list].name];
         }
       }
     }
   }
 }
-followedback(data);
+followedme(data);
 
 function printList(dataa) {
   for (list in dataa) {
@@ -75,15 +75,15 @@ function printList(dataa) {
           lists += ", " + dataa[list].followwhoI[i];
         }
       }
-      for (var j = 0; j < dataa[list].followback.length; j++) {
+      for (var j = 0; j < dataa[list].followme.length; j++) {
           if(j === 0) {
-            lists += " and " + dataa[list].followback[j];
+            lists += " and " + dataa[list].followme[j];
           }
           else {
-            lists += ", " + dataa[list].followback[j];
+            lists += ", " + dataa[list].followme[j];
           }
       }
-    console.log(lists + " follow back");
+    console.log(lists + " follow me");
   }
 }
 printList(data);
@@ -102,7 +102,7 @@ followMost(data);
 //Identify who has the most followers
 
 function hasMost(dataa) {
-    var most = _.max(dataa, function(dataa){return dataa.followback.length});
+    var most = _.max(dataa, function(dataa){return dataa.followme.length});
   console.log(most.name, 'has the most followers');
 }
 hasMost(data);
@@ -114,14 +114,17 @@ function most(dataa, callback) {
   for (list in dataa) {
     if (dataa[list].age > 30) {
       obj[list] = dataa[list];
-
     }
   }
-  console.log('obj is ')
-   console.log(obj);
+  console.log('Among the group of people who are over 30 years of age')
+  callback(obj);
 }
 most(data, hasMost);
 most(data, followMost);
+
+//List those who follow someone that doesn't follow them back
+
+
 
 
 
