@@ -56,13 +56,14 @@ function followedme (dataa) {
           dataa[Object.keys(dataa)[i]].followme.push(dataa[list].name);
         }
         else {
-          data[Object.keys(dataa)[i]].followme = [dataa[list].name];
+          dataa[Object.keys(dataa)[i]].followme = [dataa[list].name];
         }
       }
     }
   }
 }
 followedme(data);
+
 
 function printList(dataa) {
   for (list in dataa) {
@@ -156,11 +157,33 @@ donotfollowList(data);
 
 // List everyone and their reach (sum of # of followers and # of followers of followers)
 
-function reach(dataa) {
-  for (list in dataa) {
 
+function sum (dataa) {
+  for (list in dataa) {
+    for (var i = 0; i < dataa[list].followme.length; i ++) {
+      for (var j = 0; j < Object.keys(dataa).length; j ++) {
+
+        if(dataa[list].followme[i] === dataa[Object.keys(dataa)[j]].name) {
+          if(dataa[list].sum) {
+            dataa[list].sum.push(dataa[Object.keys(dataa)[j]].followme.length)
+          }
+          else {
+            dataa[list].sum = [dataa[Object.keys(dataa)[j]].followme.length]
+          }
+        }
+      }
+    }
   }
 }
+sum(data);
+
+function reach (dataa) {
+  for(list in dataa) {
+    console.log('Name: ', data[list].name, ', Number of follower: ', data[list].followme.length, ', Number of followers of followers: ', dataa[list].sum.reduce((a, b) => a + b, 0))
+  }
+}
+
+
 
 reach(data);
 console.log(data)
